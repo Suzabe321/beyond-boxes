@@ -28,7 +28,7 @@ body {
 }
 
 .navbar h1 {
-    color: #F7E1C1; /* Champagne Blush */
+    color: #F7E1C1;
     font-size: 1.8rem;
 }
 
@@ -94,10 +94,12 @@ body {
     font-size: 1.2rem;
     transition: 0.3s;
     margin-top: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .btn:hover {
-    background: #E26D5C; /* Blush Rose */
+    background: #E26D5C;
+    transform: scale(1.05);
 }
 
 /* ======= PRODUCT CATALOG ======= */
