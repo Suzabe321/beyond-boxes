@@ -1,0 +1,67 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4E1D2;
+    color: #2A3D45;
+}
+
+/* Hero Section */
+.hero {
+    background: url('background.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5rem;
+}
+
+/* Catalog */
+.catalog {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Contact */
+.contact {
+    text-align: center;
+    padding: 40px;
+    background: #D77A61;
+    color: white;
+}
+
+.contact a {
+    color: #F4E1D2;
+    text-decoration: none;
+}
