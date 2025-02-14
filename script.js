@@ -1,59 +1,75 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Load Products Dynamically
-    const productsContainer = document.querySelector(".products");
-
-    const productData = [
-        { img: "product1.jpg", name: "Luxury Box", price: "$50" },
-        { img: "product2.jpg", name: "Romantic Box", price: "$45" },
-        { img: "product3.jpg", name: "Festive Box", price: "$40" },
-        { img: "product4.jpg", name: "Minimalist Box", price: "$35" },
-        { img: "product5.jpg", name: "Vintage Box", price: "$55" },
-        { img: "product6.jpg", name: "Wellness Box", price: "$60" }
-    ];
-
-    productData.forEach((product) => {
-        const div = document.createElement("div");
-        div.classList.add("product");
-        div.innerHTML = `
-            <img src="${product.img}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.price}</p>
-            <button class="btn add-to-cart">Add to Cart</button>
-        `;
-        productsContainer.appendChild(div);
+    // Navbar Scroll Effect
+    const navbar = document.querySelector(".navbar");
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = "#660017"; // Darker Royal Burgundy
+        } else {
+            navbar.style.backgroundColor = "#800020"; // Original Royal Burgundy
+        }
     });
 
-    // Smooth Scrolling for Navigation Links
-    document.querySelectorAll(".navbar a").forEach(anchor => {
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener("click", function (e) {
-            if (this.getAttribute("href").startsWith("#")) {
-                e.preventDefault();
-                const targetId = this.getAttribute("href").substring(1);
-                document.getElementById(targetId).scrollIntoView({
-                    behavior: "smooth"
-                });
+            e.preventDefault();
+            document.querySelector(this.getAttribute("href")).scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    });
+
+    // Product Hover Effect
+    const products = document.querySelectorAll(".product");
+    products.forEach(product => {
+        product.addEventListener("mouseenter", () => {
+            product.style.transform = "scale(1.05)";
+            product.style.transition = "transform 0.3s ease-in-out";
+        });
+        product.addEventListener("mouseleave", () => {
+            product.style.transform = "scale(1)";
+        });
+    });
+
+    // Form Validation
+    const form = document.querySelector("form");
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            const textarea = document.querySelector("textarea");
+            if (textarea.value.trim() === "") {
+                alert("Please enter your customization details.");
+                event.preventDefault();
             }
         });
-    });
+    }
 
-    // Customization Form Submission
-    document.getElementById("customForm").addEventListener("submit", function (e) {
-        e.preventDefault();
-        const theme = document.getElementById("theme").value;
-        const message = document.getElementById("message").value.trim();
+    // Dark Mode Toggle (Optional)
+    const darkModeBtn = document.createElement("button");
+    darkModeBtn.innerText = "Dark Mode";
+    darkModeBtn.style.position = "fixed";
+    darkModeBtn.style.bottom = "20px";
+    darkModeBtn.style.right = "20px";
+    darkModeBtn.style.padding = "10px 20px";
+    darkModeBtn.style.backgroundColor = "#D72638"; // Rosy Pink
+    darkModeBtn.style.color = "#F7E1A1"; // Champagne Gold
+    darkModeBtn.style.border = "none";
+    darkModeBtn.style.borderRadius = "5px";
+    darkModeBtn.style.cursor = "pointer";
+    darkModeBtn.style.fontSize = "1rem";
 
-        if (message === "") {
-            alert("Please enter a personal message.");
-            return;
+    document.body.appendChild(darkModeBtn);
+
+    darkModeBtn.addEventListener("click", function () {
+        document.body.classList.toggle("dark-mode");
+        if (document.body.classList.contains("dark-mode")) {
+            document.body.style.backgroundColor = "#000";
+            document.body.style.color = "#F7E1A1"; // Champagne Gold
+            darkModeBtn.innerText = "Light Mode";
+        } else {
+            document.body.style.backgroundColor = "#1B1F3B"; // Midnight Blue
+            document.body.style.color = "#F7E1A1"; // Champagne Gold
+            darkModeBtn.innerText = "Dark Mode";
         }
-
-        alert(`Your ${theme} gift box customization has been saved!\nMessage: "${message}"`);
-    });
-
-    // Cart Button (For Future Implementation)
-    document.querySelectorAll(".add-to-cart").forEach(button => {
-        button.addEventListener("click", function () {
-            alert("Item added to cart! (Cart functionality coming soon)");
-        });
     });
 });
