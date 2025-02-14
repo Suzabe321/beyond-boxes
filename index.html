@@ -5,29 +5,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Beyond Boxes</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
+    <!-- Navigation -->
+    <nav class="navbar">
+        <h1>Beyond Boxes</h1>
+        <ul>
+            <li><a href="#catalog">Shop</a></li>
+            <li><a href="#customization">Customize</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+        </ul>
+    </nav>
+
     <!-- Hero Section -->
     <header class="hero">
-        <h1>Beyond Boxes</h1>
-        <p>Creative & Thoughtful Gift Boxes for Every Occasion</p>
+        <h1>Thoughtfully Designed Gift Boxes</h1>
+        <p>Curated with love, creativity, and a personal touch</p>
+        <a href="#catalog" class="btn">Shop Now</a>
     </header>
 
     <!-- Product Catalog -->
-    <section class="catalog">
+    <section id="catalog" class="catalog">
         <h2>Our Collection</h2>
         <div class="products">
-            <!-- Products will be loaded by JavaScript -->
+            <!-- Products will be loaded dynamically -->
         </div>
     </section>
 
+    <!-- Customization Section -->
+    <section id="customization" class="customization">
+        <h2>Personalize Your Gift Box</h2>
+        <form id="customForm">
+            <label for="theme">Choose a Theme:</label>
+            <select id="theme">
+                <option value="elegant">Elegant</option>
+                <option value="romantic">Romantic</option>
+                <option value="festive">Festive</option>
+                <option value="minimalist">Minimalist</option>
+            </select>
+
+            <label for="message">Add a Personal Message:</label>
+            <textarea id="message" placeholder="Write your message here..."></textarea>
+
+            <button type="submit" class="btn">Submit Customization</button>
+        </form>
+    </section>
+
     <!-- Contact Section -->
-    <section class="contact">
+    <section id="contact" class="contact">
         <h2>Get in Touch</h2>
-        <p>📞 <a href="https://wa.me/917406839266" target="_blank">WhatsApp: +91 7406839266</a></p>
-        <p>📧 <a href="mailto:beyondboxes1@gmail.com">Email: beyondboxes1@gmail.com</a></p>
-        <p>📷 <a href="https://instagram.com/beyondboxess" target="_blank">Instagram: @beyondboxess</a></p>
+        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/917406839266">WhatsApp: +91 7406839266</a></p>
+        <p><i class="fas fa-envelope"></i> <a href="mailto:beyondboxes1@gmail.com">Email: beyondboxes1@gmail.com</a></p>
+        <p><i class="fab fa-instagram"></i> <a href="https://instagram.com/beyondboxess" target="_blank">@beyondboxess</a></p>
     </section>
 
     <script src="script.js"></script>
