@@ -9,8 +9,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #2A3D45;
-    color: #F4E1D2;
+    background-color: #1B1F3B; /* Midnight Blue */
+    color: #F7E1A1; /* Champagne Gold */
 }
 
 /* ======= NAVIGATION BAR ======= */
@@ -18,7 +18,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #D77A61;
+    background: #800020; /* Royal Burgundy */
     padding: 15px 30px;
     position: fixed;
     width: 100%;
@@ -27,7 +27,7 @@ body {
 }
 
 .navbar h1 {
-    color: white;
+    color: #F7E1A1; /* Champagne Gold */
     font-size: 1.8rem;
 }
 
@@ -43,13 +43,13 @@ body {
 
 .navbar a {
     text-decoration: none;
-    color: white;
+    color: #F7E1A1;
     font-weight: 600;
     transition: 0.3s;
 }
 
 .navbar a:hover {
-    color: #F4E1D2;
+    color: #D72638; /* Rosy Pink */
 }
 
 .navbar i {
@@ -65,7 +65,7 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: white;
+    color: #F7E1A1;
     padding: 20px;
 }
 
@@ -82,8 +82,8 @@ body {
 }
 
 .btn {
-    background: #8A9A5B;
-    color: white;
+    background: #046307; /* Deep Emerald Green */
+    color: #F7E1A1;
     padding: 12px 24px;
     border: none;
     border-radius: 5px;
@@ -95,20 +95,20 @@ body {
 }
 
 .btn:hover {
-    background: #C7877C;
+    background: #D72638; /* Rosy Pink */
 }
 
 /* ======= PRODUCT CATALOG ======= */
 .catalog {
     text-align: center;
     padding: 80px 20px;
-    background-color: #35635C;
+    background-color: #046307; /* Deep Emerald Green */
 }
 
 .catalog h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #F4E1D2;
+    color: #F7E1A1;
 }
 
 .products {
@@ -121,7 +121,7 @@ body {
 }
 
 .product {
-    background: #D77A61;
+    background: #800020; /* Royal Burgundy */
     padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -137,11 +137,13 @@ body {
 .product h3 {
     font-size: 1.5rem;
     margin-top: 10px;
+    color: #F7E1A1;
 }
 
 .product p {
     font-size: 1.2rem;
     margin: 5px 0;
+    color: #F7E1A1;
 }
 
 .product:hover {
@@ -152,13 +154,13 @@ body {
 .customization {
     text-align: center;
     padding: 60px 20px;
-    background: #8A9A5B;
+    background: #D72638; /* Rosy Pink */
 }
 
 .customization h2 {
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #F4E1D2;
+    color: #F7E1A1;
 }
 
 form {
@@ -174,11 +176,11 @@ select,
 textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #F4E1D2;
+    border: 1px solid #F7E1A1;
     border-radius: 5px;
     font-size: 1rem;
-    background: #F4E1D2;
-    color: #2A3D45;
+    background: #F7E1A1;
+    color: #1B1F3B;
 }
 
 textarea {
@@ -190,8 +192,8 @@ textarea {
 .contact {
     text-align: center;
     padding: 40px;
-    background: #2A3D45;
-    color: white;
+    background: #1B1F3B; /* Midnight Blue */
+    color: #F7E1A1;
 }
 
 .contact h2 {
@@ -205,7 +207,7 @@ textarea {
 }
 
 .contact a {
-    color: #F4E1D2;
+    color: #F7E1A1;
     text-decoration: none;
     font-weight: bold;
     transition: 0.3s;
@@ -213,6 +215,7 @@ textarea {
 
 .contact a:hover {
     text-decoration: underline;
+    color: #D72638; /* Rosy Pink */
 }
 
 .contact i {
