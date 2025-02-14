@@ -1,28 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
     const productsContainer = document.querySelector(".products");
 
-    // List of product images
-    const productImages = [
-        "product1.jpg",
-        "product2.jpg",
-        "product3.jpg",
-        "product4.jpg",
-        "product5.jpg",
-        "product6.jpg",
-        "product7.jpg",
-        "product8.jpg",
-        "product9.jpg",
-        "product10.jpg"
+    // Sample product images
+    const productData = [
+        { img: "product1.jpg", name: "Luxury Box", price: "$50" },
+        { img: "product2.jpg", name: "Romantic Box", price: "$45" },
+        { img: "product3.jpg", name: "Festive Box", price: "$40" },
+        { img: "product4.jpg", name: "Minimalist Box", price: "$35" },
     ];
 
-    // Load products dynamically
-    productImages.forEach((img, index) => {
-        const product = document.createElement("div");
-        product.classList.add("product");
-        product.innerHTML = `
-            <img src="${img}" alt="Gift Box ${index + 1}">
-            <p>Gift Box ${index + 1}</p>
+    productData.forEach((product) => {
+        const div = document.createElement("div");
+        div.classList.add("product");
+        div.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>${product.price}</p>
+            <button class="btn">Add to Cart</button>
         `;
-        productsContainer.appendChild(product);
+        productsContainer.appendChild(div);
+    });
+
+    // Customization form
+    document.getElementById("customForm").addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert("Your custom gift box details have been saved!");
     });
 });
