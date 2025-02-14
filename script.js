@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         productDiv.classList.add("product");
 
         productDiv.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
+            <img data-src="${product.image}" class="lazy-load" alt="${product.name}">
             <h3>${product.name}</h3>
             <a href="https://instagram.com/beyondboxess" target="_blank" class="btn">Order Now</a>
         `;
@@ -28,13 +28,32 @@ document.addEventListener("DOMContentLoaded", () => {
         productContainer.appendChild(productDiv);
     });
 
-    // ==== SMOOTH SCROLLING FOR NAVIGATION ====
+    // ==== LAZY LOAD IMAGES ====
+    const lazyImages = document.querySelectorAll(".lazy-load");
+
+    const lazyLoadObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                img.classList.remove("lazy-load");
+                observer.unobserve(img);
+            }
+        });
+    }, { rootMargin: "100px" });
+
+    lazyImages.forEach(img => lazyLoadObserver.observe(img));
+
+    // ==== SMOOTH SCROLLING FOR NAVIGATION WITH OFFSET ====
     document.querySelectorAll(".navbar a").forEach(link => {
-        link.addEventListener("click", function(e) {
-            if (this.hash !== "") {
+        link.addEventListener("click", function (e) {
+            if (this.hash) {
                 e.preventDefault();
                 const targetSection = document.querySelector(this.hash);
-                targetSection.scrollIntoView({ behavior: "smooth" });
+                const offset = 70; // Adjust for fixed navbar
+                const position = targetSection.offsetTop - offset;
+
+                window.scrollTo({ top: position, behavior: "smooth" });
             }
         });
     });
@@ -44,26 +63,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const navLinks = document.querySelectorAll(".navbar a");
 
     window.addEventListener("scroll", () => {
-        let current = "";
+        let currentSection = "";
+
         sections.forEach(section => {
-            const sectionTop = section.offsetTop - 60;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute("id");
+            const sectionTop = section.offsetTop - 80;
+            const sectionHeight = section.clientHeight;
+
+            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                currentSection = section.getAttribute("id");
             }
         });
 
         navLinks.forEach(link => {
             link.classList.remove("active");
-            if (link.getAttribute("href") === `#${current}`) {
+            if (link.getAttribute("href") === `#${currentSection}`) {
                 link.classList.add("active");
             }
         });
     });
 
-    // ==== CUSTOMIZATION FORM SUBMISSION ====
-    document.getElementById("customForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        alert("Your customization request has been submitted!");
-        this.reset();
-    });
+    // ==== TOGGLE MOBILE NAVIGATION ====
+    const navToggle = document.querySelector(".nav-toggle");
+    const navMenu = document.querySelector(".navbar ul");
+
+    if (navToggle) {
+        navToggle.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+        });
+    }
+
+    // ==== CUSTOMIZATION FORM SUBMISSION WITH BETTER FEEDBACK ====
+    const customForm = document.getElementById("customForm");
+    if (customForm) {
+        customForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Create feedback message
+            const feedback = document.createElement("p");
+            feedback.textContent = "Your customization request has been submitted!";
+            feedback.style.color = "#F7E1C1";
+            feedback.style.fontWeight = "bold";
+            feedback.style.marginTop = "10px";
+
+            // Remove existing message if any
+            const existingFeedback = document.querySelector(".form-feedback");
+            if (existingFeedback) existingFeedback.remove();
+
+            feedback.classList.add("form-feedback");
+            customForm.appendChild(feedback);
+
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                customForm.reset();
+                feedback.remove();
+            }, 3000);
+        });
+    }
 });
