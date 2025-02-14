@@ -5,16 +5,16 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #F4E1D2;
-    color: #2A3D45;
+    background-color: #2A3D45; /* Dark rich background */
+    color: #F4E1D2; /* Soft beige text */
 }
 
 /* Hero Section */
 .hero {
     background: url('background.jpg') no-repeat center center/cover;
-    color: white;
     text-align: center;
     padding: 100px 20px;
+    color: #F4E1D2;
 }
 
 .hero h1 {
@@ -42,10 +42,11 @@ body {
 }
 
 .product {
-    background: white;
+    background: #35635C; /* Deep teal for contrast */
     padding: 15px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #F4E1D2;
 }
 
 .product img {
@@ -57,7 +58,7 @@ body {
 .contact {
     text-align: center;
     padding: 40px;
-    background: #D77A61;
+    background: #D77A61; /* Burnt orange */
     color: white;
 }
 
