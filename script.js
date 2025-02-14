@@ -1,75 +1,69 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Navbar Scroll Effect
-    const navbar = document.querySelector(".navbar");
-    window.addEventListener("scroll", function () {
-        if (window.scrollY > 50) {
-            navbar.style.backgroundColor = "#660017"; // Darker Royal Burgundy
-        } else {
-            navbar.style.backgroundColor = "#800020"; // Original Royal Burgundy
-        }
+document.addEventListener("DOMContentLoaded", () => {
+    // ==== DYNAMICALLY ADD PRODUCTS TO CATALOG ====
+    const productList = [
+        { name: "Elegant Bliss Box", image: "box1.jpg" },
+        { name: "Romantic Surprise", image: "box2.jpg" },
+        { name: "Festive Delights", image: "box3.jpg" },
+        { name: "Minimalist Elegance", image: "box4.jpg" },
+        { name: "Luxury Treat Box", image: "box5.jpg" },
+        { name: "Cozy Winter Set", image: "box6.jpg" },
+        { name: "Classic Celebration", image: "box7.jpg" },
+        { name: "Sweet Moments", image: "box8.jpg" },
+        { name: "Self-Care Retreat", image: "box9.jpg" },
+        { name: "Golden Glow Box", image: "box10.jpg" }
+    ];
+
+    const productContainer = document.querySelector(".products");
+
+    productList.forEach((product) => {
+        const productDiv = document.createElement("div");
+        productDiv.classList.add("product");
+
+        productDiv.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <a href="https://instagram.com/beyondboxess" target="_blank" class="btn">Order Now</a>
+        `;
+
+        productContainer.appendChild(productDiv);
     });
 
-    // Smooth Scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener("click", function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute("href")).scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        });
-    });
-
-    // Product Hover Effect
-    const products = document.querySelectorAll(".product");
-    products.forEach(product => {
-        product.addEventListener("mouseenter", () => {
-            product.style.transform = "scale(1.05)";
-            product.style.transition = "transform 0.3s ease-in-out";
-        });
-        product.addEventListener("mouseleave", () => {
-            product.style.transform = "scale(1)";
-        });
-    });
-
-    // Form Validation
-    const form = document.querySelector("form");
-    if (form) {
-        form.addEventListener("submit", function (event) {
-            const textarea = document.querySelector("textarea");
-            if (textarea.value.trim() === "") {
-                alert("Please enter your customization details.");
-                event.preventDefault();
+    // ==== SMOOTH SCROLLING FOR NAVIGATION ====
+    document.querySelectorAll(".navbar a").forEach(link => {
+        link.addEventListener("click", function(e) {
+            if (this.hash !== "") {
+                e.preventDefault();
+                const targetSection = document.querySelector(this.hash);
+                targetSection.scrollIntoView({ behavior: "smooth" });
             }
         });
-    }
+    });
 
-    // Dark Mode Toggle (Optional)
-    const darkModeBtn = document.createElement("button");
-    darkModeBtn.innerText = "Dark Mode";
-    darkModeBtn.style.position = "fixed";
-    darkModeBtn.style.bottom = "20px";
-    darkModeBtn.style.right = "20px";
-    darkModeBtn.style.padding = "10px 20px";
-    darkModeBtn.style.backgroundColor = "#D72638"; // Rosy Pink
-    darkModeBtn.style.color = "#F7E1A1"; // Champagne Gold
-    darkModeBtn.style.border = "none";
-    darkModeBtn.style.borderRadius = "5px";
-    darkModeBtn.style.cursor = "pointer";
-    darkModeBtn.style.fontSize = "1rem";
+    // ==== HIGHLIGHT ACTIVE NAV LINK ON SCROLL ====
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".navbar a");
 
-    document.body.appendChild(darkModeBtn);
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 60;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute("id");
+            }
+        });
 
-    darkModeBtn.addEventListener("click", function () {
-        document.body.classList.toggle("dark-mode");
-        if (document.body.classList.contains("dark-mode")) {
-            document.body.style.backgroundColor = "#000";
-            document.body.style.color = "#F7E1A1"; // Champagne Gold
-            darkModeBtn.innerText = "Light Mode";
-        } else {
-            document.body.style.backgroundColor = "#1B1F3B"; // Midnight Blue
-            document.body.style.color = "#F7E1A1"; // Champagne Gold
-            darkModeBtn.innerText = "Dark Mode";
-        }
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+                link.classList.add("active");
+            }
+        });
+    });
+
+    // ==== CUSTOMIZATION FORM SUBMISSION ====
+    document.getElementById("customForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        alert("Your customization request has been submitted!");
+        this.reset();
     });
 });
