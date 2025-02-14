@@ -1,14 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-body {
-    font-family: 'Poppins', sans-serif;
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
     background-color: #2A3D45;
     color: #F4E1D2;
 }
 
-/* Navigation */
+/* ======= NAVIGATION BAR ======= */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -21,19 +26,37 @@ body {
     z-index: 1000;
 }
 
+.navbar h1 {
+    color: white;
+    font-size: 1.8rem;
+}
+
 .navbar ul {
     list-style: none;
     display: flex;
     gap: 20px;
 }
 
+.navbar ul li {
+    display: inline;
+}
+
 .navbar a {
     text-decoration: none;
     color: white;
     font-weight: 600;
+    transition: 0.3s;
 }
 
-/* Hero Section */
+.navbar a:hover {
+    color: #F4E1D2;
+}
+
+.navbar i {
+    font-size: 1.5rem;
+}
+
+/* ======= HERO SECTION ======= */
 .hero {
     background: url('background.jpg') no-repeat center center/cover;
     height: 100vh;
@@ -48,38 +71,53 @@ body {
 
 .hero h1 {
     font-size: 3.5rem;
-    margin-bottom: 10px;
+    font-weight: 600;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    font-weight: 300;
 }
 
 .btn {
     background: #8A9A5B;
     color: white;
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
     font-size: 1.2rem;
+    transition: 0.3s;
+    margin-top: 15px;
 }
 
 .btn:hover {
     background: #C7877C;
 }
 
-/* Catalog */
+/* ======= PRODUCT CATALOG ======= */
 .catalog {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     background-color: #35635C;
+}
+
+.catalog h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #F4E1D2;
 }
 
 .products {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
-    padding: 20px;
     max-width: 1200px;
     margin: auto;
+    padding: 20px;
 }
 
 .product {
@@ -88,6 +126,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     text-align: center;
+    transition: transform 0.3s ease-in-out;
 }
 
 .product img {
@@ -95,11 +134,31 @@ body {
     border-radius: 10px;
 }
 
-/* Customization Section */
+.product h3 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.product p {
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+/* ======= CUSTOMIZATION SECTION ======= */
 .customization {
     text-align: center;
-    padding: 40px;
+    padding: 60px 20px;
     background: #8A9A5B;
+}
+
+.customization h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #F4E1D2;
 }
 
 form {
@@ -107,15 +166,27 @@ form {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    max-width: 500px;
+    margin: auto;
+}
+
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #F4E1D2;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #F4E1D2;
+    color: #2A3D45;
 }
 
 textarea {
-    width: 80%;
     height: 100px;
-    border-radius: 5px;
+    resize: none;
 }
 
-/* Contact */
+/* ======= CONTACT SECTION ======= */
 .contact {
     text-align: center;
     padding: 40px;
@@ -123,8 +194,59 @@ textarea {
     color: white;
 }
 
+.contact h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.contact p {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
 .contact a {
     color: #F4E1D2;
     text-decoration: none;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+.contact i {
+    font-size: 1.5rem;
+    margin-right: 8px;
+}
+
+/* ======= RESPONSIVE DESIGN ======= */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .contact h2,
+    .customization h2 {
+        font-size: 2rem;
+    }
 }
