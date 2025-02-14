@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const productsContainer = document.querySelector(".products");
 
-    // Sample product images
+    // List of product images
     const productImages = [
         "product1.jpg",
         "product2.jpg",
